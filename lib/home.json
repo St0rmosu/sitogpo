@@ -1,0 +1,34 @@
+{
+  "hero": {
+    "title": "Diamo una seconda vita ai mobili dimenticati",
+    "subtitle": "Riduciamo l'impatto ambientale trasformando mobili vecchi in pezzi unici",
+    "cta": "Scopri la collezione"
+  },
+  "mission": {
+    "title": "La Nostra Missione",
+    "text": "Ogni mobile ha una storia da raccontare. Noi la riscriviamo, riducendo l'impatto ambientale e creando pezzi unici per la tua casa.",
+    "values": [
+      {
+        "icon": "recycle",
+        "title": "Sostenibilità",
+        "description": "Riduciamo i rifiuti salvando mobili dalla discarica"
+      },
+      {
+        "icon": "heart",
+        "title": "Artigianato",
+        "description": "Ogni pezzo è unico, realizzato a mano"
+      },
+      {
+        "icon": "sparkles",
+        "title": "Qualità",
+        "description": "Materiali bio e finiture di alta qualità"
+      }
+    ]
+  },
+  "stats": {
+    "mobili_salvati": 127,
+    "co2_risparmiato": 2450,
+    "legno_recuperato": 850,
+    "vernice_evitata": 120
+  }
+}

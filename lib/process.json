@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "titolo": "Raccolta",
+    "descrizione": "Recuperiamo mobili da discariche, cantine, case abbandonate e donationi. Ogni mobile ha una storia unica.",
+    "ordine": 1,
+    "icona": "recycle"
+  },
+  {
+    "id": 2,
+    "titolo": "Sanificazione",
+    "descrizione": "Pulizia profonda, rimozione vecchie vernici tossiche e trattamento antibatterico.",
+    "ordine": 2,
+    "icona": "sparkles"
+  },
+  {
+    "id": 3,
+    "titolo": "Progettazione",
+    "descrizione": "Creiamo un progetto personalizzato per ogni mobile, considerando stile, funzionalità e preferenze del cliente.",
+    "ordine": 3,
+    "icona": "palette"
+  },
+  {
+    "id": 4,
+    "titolo": "Restyling",
+    "descrizione": "Riverniciatura con prodotti bio, sostituzione componenti danneggiati, rifiniture artigianali.",
+    "ordine": 4,
+    "icona": "hammer"
+  },
+  {
+    "id": 5,
+    "titolo": "Controllo Qualità",
+    "descrizione": "Verifica strutturale, test funzionalità e imballaggio ecologico per la consegna.",
+    "ordine": 5,
+    "icona": "check"
+  }
+]
