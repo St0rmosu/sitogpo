@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, User, Mail, Message, Briefcase, Home } from 'lucide-react';
+import { Send, User, Mail, MessageSquare, Briefcase, Home } from 'lucide-react';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -103,7 +103,7 @@ export default function ContactForm() {
       <div>
         <label className="block text-stone-700 font-medium mb-2">Messaggio</label>
         <div className="relative">
-          <Message className="absolute left-3 top-4 w-5 h-5 text-stone-400" />
+          <MessageSquare className="absolute left-3 top-4 w-5 h-5 text-stone-400" />
           <textarea
             required
             rows={5}
