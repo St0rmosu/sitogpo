@@ -1,26 +1,88 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --color-cream: #E8E0D5;
+  --color-cream-dark: #D4C9BC;
+  --color-terracotta: #B86B4A;
+  --color-terracotta-light: #C9836A;
+  --color-sage: #6B8A69;
+  --color-sage-dark: #556E54;
+  --color-midnight: #1E2A35;
+  --color-midnight-light: #2D3E50;
+  --color-sand: #B5A38E;
+  --color-hazelnut: #9A7B5C;
+  --color-wood-light: #A88A5C;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-midnight);
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+.font-serif {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+.font-sans {
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-terracotta) 0%, var(--color-sage) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-cream { background-color: var(--color-cream); }
+.bg-cream-dark { background-color: var(--color-cream-dark); }
+.bg-terracotta { background-color: var(--color-terracotta); }
+.bg-terracotta-light { background-color: var(--color-terracotta-light); }
+.bg-sage { background-color: var(--color-sage); }
+.bg-sage-dark { background-color: var(--color-sage-dark); }
+.bg-midnight { background-color: var(--color-midnight); }
+.bg-midnight-light { background-color: var(--color-midnight-light); }
+
+.text-cream { color: var(--color-cream); }
+.text-cream-dark { color: var(--color-cream-dark); }
+.text-terracotta { color: var(--color-terracotta); }
+.text-terracotta-light { color: var(--color-terracotta-light); }
+.text-sage { color: var(--color-sage); }
+.text-sage-dark { color: var(--color-sage-dark); }
+.text-midnight { color: var(--color-midnight); }
+.text-midnight-light { color: var(--color-midnight-light); }
+
+.border-sand { border-color: var(--color-sand); }
+
+.rounded-soft { border-radius: 1rem; }
+.rounded-soft-lg { border-radius: 1.5rem; }
+
+.card-shadow { box-shadow: 0 4px 20px rgba(30, 42, 53, 0.15); }
+.card-shadow-hover:hover { box-shadow: 0 8px 30px rgba(30, 42, 53, 0.2); }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+.animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }

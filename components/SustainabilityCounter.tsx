@@ -1,17 +1,15 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
 
 interface CounterProps {
   value: number;
   label: string;
   suffix?: string;
-  icon: string;
 }
 
-function Counter({ value, label, suffix = '', icon }: CounterProps) {
+function Counter({ value, label, suffix = '' }: CounterProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const [count, setCount] = useState(0);
@@ -44,21 +42,21 @@ function Counter({ value, label, suffix = '', icon }: CounterProps) {
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       className="text-center"
     >
-      <div className="text-5xl font-bold text-green-600 mb-2">
+      <div className="text-4xl md:text-5xl font-serif font-semibold text-cream mb-2">
         {count.toLocaleString()}{suffix}
       </div>
-      <div className="text-stone-600 font-medium">{label}</div>
+      <div className="text-cream/70 font-medium">{label}</div>
     </motion.div>
   );
 }
 
 export default function SustainabilityCounter() {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-      <Counter value={127} label="Mobili Salvati" icon="sofa" />
-      <Counter value={2450} label="kg CO₂ Risparmiato" suffix=" kg" icon="leaf" />
-      <Counter value={850} label="kg Legno Recuperato" suffix=" kg" icon="tree" />
-      <Counter value={120} label="L Vernice Evitata" suffix=" L" icon="droplet" />
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+      <Counter value={127} label="Mobili Salvati" />
+      <Counter value={2700} label="kg CO₂ Risparmiato" suffix=" kg" />
+      <Counter value={850} label="kg Legno Recuperato" suffix=" kg" />
+      <Counter value={120} label="L Vernice Bio Usata" suffix=" L" />
     </div>
   );
 }

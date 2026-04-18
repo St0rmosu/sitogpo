@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Leaf } from 'lucide-react';
 
 interface ProductCardProps {
   product: {
@@ -24,51 +24,49 @@ export default function ProductCard({ product, index }: ProductCardProps) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1 }}
-      className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all"
+      transition={{ delay: index * 0.05, duration: 0.4 }}
+      className="group"
     >
-      <div className="relative aspect-square overflow-hidden bg-stone-100">
-        <img
-          src={product.dopo}
-          alt={product.nome}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-        />
-        <div className="absolute top-4 left-4 px-3 py-1 bg-green-600 text-white text-xs font-medium rounded-full">
-          {product.categoria}
+      <Link href={`/shop/${product.slug}`} className="block">
+        <div className="bg-cream-dark rounded-2xl overflow-hidden border border-sand/30 hover:border-terracotta/50 transition-all duration-300">
+          <div className="relative aspect-[3/4] overflow-hidden">
+            <img
+              src={product.dopo}
+              alt={product.nome}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div className="absolute top-3 left-3">
+              <span className="px-2.5 py-1 bg-cream/90 backdrop-blur-sm text-midnight text-[10px] font-medium rounded-full">
+                {product.categoria}
+              </span>
+            </div>
+          </div>
+          
+          <div className="p-4">
+            <h3 className="text-base font-serif font-semibold text-midnight leading-tight mb-1 truncate">
+              {product.nome}
+            </h3>
+            <div className="flex items-center gap-1.5 text-midnight/40 text-xs mb-3">
+              <span className="truncate">{product.provenienza}</span>
+            </div>
+            
+            <div className="flex items-center justify-between">
+              <span className="text-lg font-serif font-semibold text-terracotta">
+                €{product.prezzo}
+              </span>
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1 text-sage text-xs">
+                  <Leaf className="w-3 h-3" />
+                  <span>-{product.co2_risparmiato}kg</span>
+                </div>
+                <span className="w-7 h-7 flex items-center justify-center bg-midnight text-cream rounded-full group-hover:bg-terracotta transition-colors">
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div className="p-6">
-        <h3 className="text-xl font-semibold text-stone-800 mb-2">
-          {product.nome}
-        </h3>
-        <p className="text-stone-500 text-sm mb-4 line-clamp-2">
-          {product.provenienza}
-        </p>
-        
-        <div className="flex items-center justify-between mb-4">
-          <span className="text-2xl font-bold text-green-600">
-            €{product.prezzo}
-          </span>
-          <span className="text-stone-400 text-sm">
-            {product.misure}
-          </span>
-        </div>
-
-        <div className="flex items-center gap-2 text-sm text-stone-600 mb-4">
-          <span className="px-2 py-1 bg-green-100 text-green-700 rounded">
-            -{product.co2_risparmiato}kg CO₂
-          </span>
-        </div>
-
-        <Link
-          href={`/shop/${product.slug}`}
-          className="flex items-center justify-center gap-2 w-full py-3 bg-stone-800 text-white rounded-lg hover:bg-stone-700 transition-colors"
-        >
-          Vedi Dettagli
-          <ArrowRight className="w-4 h-4" />
-        </Link>
-      </div>
+      </Link>
     </motion.div>
   );
 }
