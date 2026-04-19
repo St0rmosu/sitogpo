@@ -14,39 +14,39 @@ export default function HeroSection() {
         <div className="absolute bottom-0 -left-20 md:left-0 w-[200px] md:w-[400px] h-[200px] md:h-[400px] rounded-full bg-sage/10 blur-3xl" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12 md:pt-32 md:pb-20">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+      <div className="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-24 pb-10 md:pt-32 md:pb-20">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-terracotta/10 rounded-full mb-3 md:mb-6">
-              <FaCouch className="w-4 h-4 text-terracotta" />
-              <span className="text-xs md:text-sm font-medium text-terracotta">Restauro Artigianale</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-terracotta/10 rounded-full mb-4 md:mb-6">
+              <FaCouch className="w-5 h-5 text-terracotta" />
+              <span className="text-sm font-medium text-terracotta">Restauro Artigianale</span>
             </div>
             
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-semibold text-midnight leading-[1.15] mb-3 md:mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-semibold text-midnight leading-[1.15] mb-4 md:mb-6">
               Ogni mobile ha una{' '}
               <span className="text-gradient">storia da raccontare</span>
             </h1>
             
-            <p className="text-sm md:text-lg text-midnight/70 mb-5 md:mb-8 max-w-lg leading-relaxed">
+            <p className="text-base md:text-lg text-midnight/70 mb-6 md:mb-8 max-w-lg leading-relaxed">
               Diamo una seconda vita ai pezzi dimenticati. Trasformiamo mobili trascurati 
               in opere d&apos;arte uniche per la tua casa.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-2 md:gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
               <Link
                 href="/shop"
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 md:px-8 md:py-4 bg-terracotta text-cream font-medium rounded-full hover:bg-terracotta-light transition-all hover:shadow-lg hover:shadow-terracotta/20 text-sm md:text-base"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 md:px-8 md:py-4 bg-terracotta text-cream font-medium rounded-full hover:bg-terracotta-light transition-all hover:shadow-lg hover:shadow-terracotta/20 text-base md:text-base"
               >
                 Scopri la Collezione
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
                 href="/processo"
-                className="inline-flex items-center justify-center px-5 py-2.5 md:px-8 md:py-4 bg-midnight/5 text-midnight font-medium rounded-full hover:bg-midnight/10 transition-colors text-sm md:text-base"
+                className="inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 bg-midnight/5 text-midnight font-medium rounded-full hover:bg-midnight/10 transition-colors text-base md:text-base"
               >
                 Il Nostro Processo
               </Link>

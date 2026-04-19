@@ -15,31 +15,87 @@ const navLinks = [
   { href: '/sostenibilita', label: 'Sostenibilità' },
 ];
 
-const pageColors: Record<string, { bg: string; active: string; text: string; activeText: string; border: string }> = {
-  '/': { bg: 'bg-cream', active: 'bg-terracotta', text: 'text-midnight', activeText: 'text-cream', border: 'border-sand/30' },
-  '/shop': { bg: 'bg-midnight', active: 'bg-cream', text: 'text-cream', activeText: 'text-midnight', border: 'border-white/10' },
-  '/processo': { bg: 'bg-midnight', active: 'bg-cream', text: 'text-cream', activeText: 'text-midnight', border: 'border-white/10' },
-  '/su-misura': { bg: 'bg-midnight', active: 'bg-cream', text: 'text-cream', activeText: 'text-midnight', border: 'border-white/10' },
-  '/sostenibilita': { bg: 'bg-sage', active: 'bg-cream', text: 'text-cream', activeText: 'text-midnight', border: 'border-cream/10' },
+const getPageColors = (pathname: string) => {
+  switch (pathname) {
+    case '/': return { bg: 'bg-cream', active: 'bg-terracotta', text: 'text-midnight', activeText: 'text-cream', border: 'border-sand/30', icon: 'text-terracotta' };
+    case '/shop': return { bg: 'bg-midnight', active: 'bg-cream', text: 'text-cream', activeText: 'text-midnight', border: 'border-white/10', icon: 'text-terracotta' };
+    case '/processo': return { bg: 'bg-midnight', active: 'bg-cream', text: 'text-cream', activeText: 'text-midnight', border: 'border-white/10', icon: 'text-terracotta' };
+    case '/su-misura': return { bg: 'bg-midnight', active: 'bg-cream', text: 'text-cream', activeText: 'text-midnight', border: 'border-white/10', icon: 'text-terracotta' };
+    case '/sostenibilita': return { bg: 'bg-sage', active: 'bg-cream', text: 'text-cream', activeText: 'text-midnight', border: 'border-cream/10', icon: 'text-terracotta' };
+    default: return { bg: 'bg-cream', active: 'bg-terracotta', text: 'text-midnight', activeText: 'text-cream', border: 'border-sand/30', icon: 'text-terracotta' };
+  }
 };
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-  const colors = pageColors[pathname] || pageColors['/'];
+  const colors = getPageColors(pathname);
 
   return (
     <>
-      <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50">
-        <div className={`flex items-center gap-1 ${colors.bg} border ${colors.border} rounded-full shadow-lg px-2 py-1.5`}>
-          <Link href="/" className={`flex items-center gap-2 px-2 py-1.5 group rounded-full hover:bg-white/10 transition-colors ${colors.text}`}>
-            <div className="w-8 h-8 rounded-full bg-terracotta/20 flex items-center justify-center">
-              <FaCouch className="w-5 h-5 text-terracotta" />
-            </div>
+      <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] md:hidden">
+        <div className={`flex items-center justify-between gap-3 ${colors.bg} border ${colors.border} rounded-full shadow-lg px-4 py-3`}>
+          <Link href="/" className="flex items-center gap-2">
+            <FaCouch className={`w-5 h-5 ${colors.icon} flex-shrink-0`} />
             <span className={`text-sm font-serif font-semibold ${colors.text}`}>L'Impatto Visivo</span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-0.5">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className={`p-2 ${colors.text} hover:bg-black/10 rounded-full transition-colors flex-shrink-0`}
+            aria-label="Menu"
+          >
+            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
+      </nav>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="fixed top-24 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-2rem)] max-w-sm"
+          >
+            <div className={`${colors.bg} border ${colors.border} rounded-2xl shadow-xl overflow-hidden`}>
+              <div className="p-3 space-y-1">
+                {navLinks.map((link) => {
+                  const isActive = pathname === link.href;
+                  const linkColors = getPageColors(link.href);
+                  const isDarkPage = ['/shop', '/processo', '/su-misura'].includes(pathname);
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className={`block py-3 px-4 rounded-xl font-medium transition-all ${
+                        isActive 
+                          ? `${linkColors.active} ${linkColors.activeText} font-semibold` 
+                          : isDarkPage 
+                            ? 'text-white/70 hover:text-white hover:bg-white/10'
+                            : `${colors.text}/70 hover:${colors.text} hover:bg-black/10`
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 hidden md:flex">
+        <div className={`flex items-center gap-1 ${colors.bg} border ${colors.border} rounded-full shadow-lg px-2 py-1.5`}>
+          <Link href="/" className={`flex items-center gap-2 px-2 py-1.5 group rounded-full hover:bg-black/5 transition-colors ${colors.text}`}>
+            <FaCouch className={`w-4 h-4 ${colors.icon}`} />
+            <span className={`text-sm font-serif font-semibold ${colors.text}`}>L'Impatto Visivo</span>
+          </Link>
+
+          <div className="flex items-center gap-0.5">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -62,50 +118,8 @@ export default function Navbar() {
               );
             })}
           </div>
-
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className={`md:hidden p-2 ${colors.text} hover:bg-white/10 rounded-full transition-colors`}
-            aria-label="Menu"
-          >
-            {isOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
-          </button>
         </div>
       </nav>
-
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="fixed top-24 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-2rem)] max-w-sm"
-          >
-            <div className="bg-midnight border border-white/10 rounded-2xl shadow-xl overflow-hidden">
-              <div className="p-2 space-y-1">
-                {navLinks.map((link) => {
-                  const isActive = pathname === link.href;
-                  return (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={() => setIsOpen(false)}
-                      className={`block py-2.5 px-4 rounded-xl font-medium transition-colors ${
-                        isActive 
-                          ? 'text-terracotta bg-white/10' 
-                          : 'text-cream/70 hover:text-cream hover:bg-white/5'
-                      }`}
-                    >
-                      {link.label}
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </>
   );
 }

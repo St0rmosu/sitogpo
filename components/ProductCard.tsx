@@ -28,7 +28,7 @@ export default function ProductCard({ product, index }: ProductCardProps) {
       className="group"
     >
       <Link href={`/shop/${product.slug}`} className="block">
-        <div className="bg-cream-dark rounded-2xl overflow-hidden border border-sand/30 hover:border-terracotta/50 transition-all duration-300">
+        <div className="bg-cream-dark rounded-3xl overflow-hidden border border-sand/30 hover:border-terracotta/50 transition-all duration-300">
           <div className="relative aspect-[3/4] overflow-hidden">
             <img
               src={product.dopo}
@@ -36,17 +36,17 @@ export default function ProductCard({ product, index }: ProductCardProps) {
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute top-3 left-3">
-              <span className="px-2.5 py-1 bg-cream/90 backdrop-blur-sm text-midnight text-[10px] font-medium rounded-full">
+              <span className="px-3 py-1.5 bg-cream/90 backdrop-blur-sm text-midnight text-xs font-medium rounded-full">
                 {product.categoria}
               </span>
             </div>
           </div>
           
-          <div className="p-4">
-            <h3 className="text-base font-serif font-semibold text-midnight leading-tight mb-1 truncate">
+          <div className="p-5">
+            <h3 className="text-lg font-serif font-semibold text-midnight leading-tight mb-2 truncate">
               {product.nome}
             </h3>
-            <div className="flex items-center gap-1.5 text-midnight/40 text-xs mb-3">
+            <div className="flex items-center gap-2 text-midnight/50 text-sm mb-4">
               <span className="truncate">{product.provenienza}</span>
             </div>
             
