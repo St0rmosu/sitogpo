@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProductCard from '@/components/ProductCard';
+import products from '@/lib/products.json';
 import { Filter, ChevronDown } from 'lucide-react';
 
 const categories = ['Tutti', 'Scrivanie', 'Comò', 'Librerie', 'Tavolini', 'Armadi', 'Tavoli', 'Poltrone', 'Credenze', 'Letti'];
@@ -24,32 +25,12 @@ interface Product {
 }
 
 export default function Shop() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState('Tutti');
   const [filtersOpen, setFiltersOpen] = useState(false);
 
-  useEffect(() => {
-    fetch('/api/products')
-      .then(res => res.json())
-      .then(data => {
-        setProducts(data.products || []);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, []);
-
   const filteredProducts = selectedCategory === 'Tutti'
     ? products
-    : products.filter(p => p.categoria === selectedCategory);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-cream flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-terracotta"></div>
-      </div>
-    );
-  }
+    : products.filter((p: Product) => p.categoria === selectedCategory);
 
   return (
     <div className="min-h-screen">
@@ -149,7 +130,7 @@ export default function Shop() {
             transition={{ delay: 0.2 }}
             className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5"
           >
-            {filteredProducts.map((product, index) => (
+            {filteredProducts.map((product: Product, index: number) => (
               <ProductCard key={product.id} product={product} index={index} />
             ))}
           </motion.div>
