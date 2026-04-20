@@ -6,17 +6,17 @@ const teamMembers = [
   {
     name: 'Lorenzo Recchia',
     role: 'Creative Director & Master Artisan',
-    image: '/images/lorenzo.jpg',
+    image: '/images/IMG_8472.PNG',
   },
   {
     name: 'Nicolò Mongelli',
     role: 'CEO & Head of Strategy',
-    image: '/images/nicolo.jpg',
+    image: '/images/IMG_8475.PNG',
   },
   {
     name: 'Federico Marasciulo',
     role: 'Head of Operation & E-commerce',
-    image: '/images/federico.jpg',
+    image: '/images/IMG_8474.PNG',
   },
 ];
 
