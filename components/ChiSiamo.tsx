@@ -5,17 +5,17 @@ import { motion } from 'framer-motion';
 const teamMembers = [
   {
     name: 'Lorenzo Recchia',
-    role: 'Fondatore',
+    role: 'Creative Director & Master Artisan',
     image: '/images/lorenzo.jpg',
   },
   {
     name: 'Nicolò Mongelli',
-    role: 'Responsabile Restauro',
+    role: 'CEO & Head of Strategy',
     image: '/images/nicolo.jpg',
   },
   {
     name: 'Federico Marasciulo',
-    role: 'Artigiano',
+    role: 'Head of Operation & E-commerce',
     image: '/images/federico.jpg',
   },
 ];
