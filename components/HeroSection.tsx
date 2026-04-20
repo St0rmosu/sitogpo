@@ -91,8 +91,7 @@ export default function HeroSection() {
           className="mt-8 md:mt-20 flex flex-wrap justify-center gap-6 md:gap-16"
         >
           {[
-            { number: '10+', label: 'Anni di esperienza' },
-            { number: '500+', label: 'Mobili salvati' },
+            { number: '30+', label: 'Mobili salvati' },
             { number: '100%', label: 'Artigianali' },
           ].map((stat, i) => (
             <div key={i} className="text-center">

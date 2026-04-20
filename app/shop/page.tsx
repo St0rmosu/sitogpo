@@ -1,20 +1,55 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProductCard from '@/components/ProductCard';
-import products from '@/lib/products.json';
 import { Filter, ChevronDown } from 'lucide-react';
 
 const categories = ['Tutti', 'Scrivanie', 'Comò', 'Librerie', 'Tavolini', 'Armadi', 'Tavoli', 'Poltrone', 'Credenze', 'Letti'];
 
+interface Product {
+  id: number;
+  nome: string;
+  slug: string;
+  descrizione: string;
+  prezzo: number;
+  misure: string;
+  provenienza: string;
+  materiali: string;
+  co2_risparmiato: number;
+  categoria: string;
+  prima: string;
+  dopo: string;
+  immagini: string[];
+}
+
 export default function Shop() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState('Tutti');
   const [filtersOpen, setFiltersOpen] = useState(false);
+
+  useEffect(() => {
+    fetch('/api/products')
+      .then(res => res.json())
+      .then(data => {
+        setProducts(data.products || []);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
 
   const filteredProducts = selectedCategory === 'Tutti'
     ? products
     : products.filter(p => p.categoria === selectedCategory);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-cream flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-terracotta"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen">
@@ -62,7 +97,7 @@ export default function Shop() {
               )}
               {selectedCategory === 'Tutti' && (
                 <span className="text-midnight/50 text-sm">
-                  {filteredProducts.length} pezzi in collezione
+                  {products.length} pezzi in collezione
                 </span>
               )}
             </div>
