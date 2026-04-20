@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import ProcessTimeline from '@/components/ProcessTimeline';
-import { Play, Award, Users, Heart } from 'lucide-react';
+import { Award, Users, Heart } from 'lucide-react';
 
 const stats = [
   { value: '10+', label: 'Anni di Attività', icon: Award },
@@ -46,30 +46,7 @@ export default function Processo() {
         
         <section className="py-16 md:py-24 bg-midnight text-cream">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-10 md:mb-12"
-            >
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-semibold mb-3 md:mb-4">
-                Video del Processo
-              </h2>
-              <p className="text-base md:text-lg text-cream/60">
-                Guarda i nostri artigiani al lavoro
-              </p>
-            </motion.div>
-
-            <div className="relative aspect-video bg-midnight/80 rounded-xl md:rounded-2xl overflow-hidden shadow-xl md:shadow-2xl">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center text-cream/40">
-                  <Play className="w-16 md:w-20 h-16 md:h-20 mx-auto mb-3 md:mb-4 opacity-30" />
-                  <p className="text-base md:text-lg">Video timelapse in arrivo</p>
-                  <p className="text-sm">Mostra gli artigiani durante il restyling</p>
-                </div>
-              </div>
             </div>
-          </div>
         </section>
       </div>
 
