@@ -18,18 +18,18 @@
 - **Processo di rigenerazione**: timeline a 5 passi e contatori di impatto.
 - **Pagina sostenibilità**: contatori di impatto, iniziative, certificazioni e grafici donut animati in SVG.
 - **Logistica**: zone e prezzi di consegna per l'Italia, packaging ecosostenibile e guida alla consegna.
-- **Servizio su misura**: form di contatto per privati e aziende con workflow in 4 passi.
-- **Temi per pagina**: la Navbar usa una palette diversa per ogni sezione (design system Tailwind v4: crema/terracotta/sage/mezzanotte).
+- **Servizio su misura**: form di contatto per privati e aziende con workflow in 4 passi (validato lato client; l'invio a un backend non è implementato).
+- **Temi per pagina**: la Navbar assume palette di colori diverse in base alla sezione, con design system Tailwind v4 personalizzato (palette crema/terracotta/sage/mezzanotte).
 
 ## Tecnologie
 
-- **Next.js 16 & React 19** — framework full-stack con App Router e Server/Client Components
-- **TypeScript 5** — tipizzazione statica
-- **Tailwind CSS v4** — styling con palette colori custom
-- **Framer Motion** — animazioni di scroll, reveal e transizioni di pagina
-- **Supabase (PostgreSQL)** — database cloud e gestione catalogo prodotti
-- **Lucide Icons** — iconografia
-- **Vercel** — hosting e deployment continuo
+- **Next.js 16 & React 19** — Framework con App Router (pagine client component)
+- **TypeScript 5** — Tipizzazione statica
+- **Tailwind CSS v4** — Styling moderno con palette colori custom
+- **Framer Motion** — Animazioni fluide di scroll, reveal e transizioni di pagina
+- **Supabase (PostgreSQL)** — Database cloud collegato ma non ancora consumato dalle pagine
+- **Lucide Icons** — Iconografia moderna e minimale
+- **Vercel** — Piattaforma di hosting e deployment continuo
 
 ## Uso
 
